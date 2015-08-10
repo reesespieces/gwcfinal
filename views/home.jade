@@ -6,6 +6,7 @@ html
     title Welcome
     // Our created js and css files
     script(src='//code.jquery.com/jquery-1.10.2.js')
+    script(src='/javascripts/home.js')
     link(rel='stylesheet', type='text/css', href='/stylesheets/search.css')
     // Compiled and minified CSS
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css')
@@ -25,27 +26,45 @@ html
       .nav-wrapper.cyan
         a.brand-logo(href='#', style='padding-left:60px;') MapYourTour
         ul#nav-mobile.right.hide-on-med-and-down
+          // Modal Trigger
           li
-            a(href='#') Log In
+            a.modal-trigger(href='#modal1') Log In
+          // Modal Structure
+          #modal1.modal.black-text
+            .modal-content.center
+              h4 Log In
+              p Welcome back. Enter your username and password below.
+            .modal-footer.center
+              .row
+                form.col.s12
+                  .row
+                    .input-field.col.s6
+                      input#userName.validate(placeholder='Username', type='text')
+                    .row
+                      .input-field.col.s6
+                        input#password.validate(placeholder='Password', type='password')
+              a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Log In
     .parallax-container
       .parallax
-        img(src='images/campus1.jpg')
+        img(src='images/campus2.jpg')
       // MISSION STATEMENT
       p.center.flow-text.white-text(style='text-shadow: 2px 2px 8px #000;')
         b Simplifying the process of planning a college trip.
     // SIGN UP
     br
     .center
-      a.waves-effect.waves-light.btn Sign Up
+      a.waves-effect.waves-light.btn(href='signup.html') Sign Up
     .container
       .section
         // Icon Section
         .row
           .col.s12.m4
             .icon-block
+              // FIRST THIRD OF THE PAGE, THE PROBLEM
               h5.center The Problem
               p.light
                 | We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+          // SECOND THIRD, THE SOLUTION
           .col.s12.m4
             .icon-block
               h5.center Our Solution
@@ -66,6 +85,7 @@ html
                 | feature will give users the ability to schedule college tours with
                 | colleges that they hadn’t planned on visiting prior to visiting our
                 | website.
+          // ABOUT US
           .col.s12.m4
             .icon-block
               h5.center About Us
@@ -77,10 +97,12 @@ html
                 b Maddie Dick, CONNECTICUT
               p.light
                 b Nora Mitchell, NEW YORK
+  // FOOTER
   footer.page-footer.cyan
     .container.white-text
       .row
         .col.l6.s12
+          // CONTACT US
           h5.white-text Contact Us
           ul
             li
@@ -94,8 +116,8 @@ html
               a.grey-text.text-lighten-3(href='#!') Map Your Tour
             li
               | Twitter: 
-              a.grey-text.text-lighten-3(href='#!') @MapYourTour
+              a.grey-text.text-lighten-3(href='https://twitter.com/MapYourTour') @MapYourTour
     .footer-copyright
       .container
         | © 2015 Copyright MapYourTour
-        a.grey-text.text-lighten-4.right(href='#!') Home
+        a.grey-text.text-lighten-4.right(href='#!') Hom
