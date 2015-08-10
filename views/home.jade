@@ -1,0 +1,101 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+    meta(charset='utf-8')
+    title Welcome
+    // Our created js and css files
+    script(src='//code.jquery.com/jquery-1.10.2.js')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/search.css')
+    // Compiled and minified CSS
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css')
+    // Compiled and minified JavaScript
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js')
+    style.
+      .parallax-container {
+      height: "90px";
+      }
+    script.
+      $(document).ready(function(){
+      $('.parallax').parallax();
+      });
+  body
+    // CREATING NAV BAR
+    nav
+      .nav-wrapper.cyan
+        a.brand-logo(href='#', style='padding-left:60px;') MapYourTour
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='#') Log In
+    .parallax-container
+      .parallax
+        img(src='images/campus1.jpg')
+      // MISSION STATEMENT
+      p.center.flow-text.white-text(style='text-shadow: 2px 2px 8px #000;')
+        b Our site simplifies the process of planning a college trip.
+    // SIGN UP
+    br
+    .center
+      a.waves-effect.waves-light.btn Sign Up
+    .container
+      .section
+        // Icon Section
+        .row
+          .col.s12.m4
+            .icon-block
+              h5.center The Problem
+              p.light
+                | We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+          .col.s12.m4
+            .icon-block
+              h5.center Our Solution
+              p.light
+                | We are planning to improve the process of scheduling and
+                | booking college tours by putting all the necessary information in one
+                | place: our website.  Our site will collect all the user’s information
+                | when she or he signs up that would be needed for booking a college tour.
+                | This way students don’t have to re-enter their information every time
+                | they sign up for a tour, like they would normally do when booking on
+                | individual colleges’ websites. Our website will also allow users to
+                | search for colleges based on location, making it easier to book
+                | multiple college tours, or allow the users to search by college name.
+                | When the user searches the map, markers representing different colleges
+                | will pop up onto the screen. When the user clicks on a marker, a brief
+                | description of the college shows up on the side of the map, along with
+                | basic statistics and a calendar with available tours and times. This
+                | feature will give users the ability to schedule college tours with
+                | colleges that they hadn’t planned on visiting prior to visiting our
+                | website.
+          .col.s12.m4
+            .icon-block
+              h5.center About Us
+              p.light
+                b Hannah Lerner, MASSACHUSETTS
+              p.light
+                b Maddie Comtois, TEXAS
+              p.light
+                b Maddie Dick, CONNECTICUT
+              p.light
+                b Nora Mitchell, NEW YORK
+  footer.page-footer.cyan
+    .container.white-text
+      .row
+        .col.l6.s12
+          h5.white-text Contact Us
+          ul
+            li
+              | Email: 
+              a.grey-text.text-lighten-3(href='#!') MapYourTour@gmail.com
+            li
+              | Instagram: 
+              a.grey-text.text-lighten-3(href='https://instagram.com/mapyourtour/') @MapYourTour
+            li
+              | Facebook: 
+              a.grey-text.text-lighten-3(href='#!') Map Your Tour
+            li
+              | Twitter: 
+              a.grey-text.text-lighten-3(href='#!') @MapYourTour
+    .footer-copyright
+      .container
+        | © 2015 Copyright MapYourTour
+        a.grey-text.text-lighten-4.right(href='#!') Home
