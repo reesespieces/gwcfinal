@@ -7,6 +7,7 @@
   <title>Welcome</title>
   <!-- Our created js and css files -->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="/javascripts/home.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/search.css">
 
   <!-- Compiled and minified CSS -->
@@ -34,13 +35,37 @@
     <div class="nav-wrapper cyan">
       <a href="#" class="brand-logo" style="padding-left:60px;">MapYourTour</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Log In</a></li>
+        <!-- Modal Trigger -->
+        <li><a class="modal-trigger" href="#modal1">Log In</a></li>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal black-text">
+          <div class="modal-content center">
+            <h4>Log In</h4>
+            <p>Welcome back. Enter your username and password below.</p>
+          </div>
+          <div class="modal-footer center">
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Username" id="userName" type="text" class="validate">
+                  </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Password" id="password" type="password" class="validate">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Log In</a>
+          </div>
+        </div>
       </ul>
     </div>
   </nav>
 
   <div class="parallax-container">
-    <div class="parallax"><img src="images/campus1.jpg"></div>
+    <div class="parallax"><img src="images/campus2.jpg"></div>
     <!-- MISSION STATEMENT -->
     <p class="center flow-text white-text" style="text-shadow: 2px 2px 8px #000;"><b>Simplifying the process of planning a college trip.</b></p>
   </div>
@@ -48,7 +73,7 @@
   <!-- SIGN UP -->
 </br>
 <div class="center">
-  <a class="waves-effect waves-light btn">Sign Up</a>
+  <a class="waves-effect waves-light btn" href="signup.html">Sign Up</a>
 </div>
 
 <div class="container">
