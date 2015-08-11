@@ -78,6 +78,7 @@ function drawMap() {
     console.log(this)
     var latLong = new google.maps.LatLng(this.latitude, this.longitude);
     console.log(latLong)
+    var collegeName = this.name;
     var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
@@ -96,6 +97,8 @@ function drawMap() {
         InfoWindow.close();
         InfoWindow.setContent(contentString);
         InfoWindow.open(map,marker);
+
+        document.getElementById('bookVisit').innerHTML = collegeName;
     });
   });
 }
