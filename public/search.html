@@ -5,32 +5,24 @@
    <meta charset="utf-8">
 
    <title>Places search box</title>
+   <!-- Google Maps -->
    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
+   <!-- Local CSS and JS -->
    <script src="/javascripts/search.js"></script>
-
    <link rel="stylesheet" type="text/css" href="/stylesheets/search.css">
 
-   <!-- Compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-
-   <!-- Compiled and minified JavaScript -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-
-   <link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/>
-
+   <!-- JQuery -->
    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-   <script>
-     $(function() {
-       //$('#text').datetimepicker({
-       //  inline:true
-       //});
-       $( "#calendar" ).datepicker();
-    });
-  </script>
+   <!-- Materialize: Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+
+   <!-- Materialize: Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+
  </head>
  <body>
    <!-- CREATING NAV BAR -->
@@ -44,7 +36,11 @@
      <div style "width:30%; float:left;" id="bookVisit"></div>
      </div>
 
+     <!-- A DB OF  COLLEGE AVAILABILITIES (TOUR TIMES) SET UP LIKE:
+     COLLEGES = [{'NAME':'HARVARD',...,'DATES':[{DATE: '8/15/15', TIMES:[10, 11, 1]}, {'DATE':...}]}]
+
      <!--<input type="text" id="datetimepicker"/><br><br> -->
  </body>
+
 
 </html>

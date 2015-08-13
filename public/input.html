@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+
+  <title>Welcome</title>
+  <!-- Our created js and css files -->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="/javascripts/signup.js"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+</head>
+
+<script>
+  var userlist = {};
+  function validate(){
+    var firstName = document.getElementById("firstName").value();
+    var lastName = document.getElementById("lastName").value();
+console.log(firstName);
+console.log(lastName);
+    userlist.push({'firstName':firstName, 'lastName': lastName});
+    alert(userlist);
+  }
+
+  validate();
+</script>
+
+  <div class="center">
+    <h2>Sign Up</h2>
+  </div>
+
+  <form action="/adduser" method="post">
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <!-- FIRST NAME FORM -->
+            <input id="firstName" name="firstName" type="text" class="validate">
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <!-- LAST NAME FORM -->
+            <input id="last_name" name="lastName" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+  </form>
+
+  <div class="center">
+    <button id="btnSubmit" onclick="validate()" class="waves-effect waves-light btn" type="sumbit">Submit</button>
+  </div>
+  </br>
+
+  </body>
+</html>

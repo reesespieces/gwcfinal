@@ -7,8 +7,7 @@
   <title>Welcome</title>
   <!-- Our created js and css files -->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="/javascripts/home.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/search.css">
+  <script src="/javascripts/signup.js"></script>
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
@@ -16,6 +15,21 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </head>
+
+<script>
+  var userlist = {}; // CREATING DICTIONARY TO STORE INPUTTED FIELDS
+  function validate(){
+    var firstName = document.getElementById("firstName").value(); //GRAB VALUE OF THE INPUT IN THE FIELD FIRST NAME
+    var lastName = document.getElementById("lastName").value(); //GRAB VALUE OF THE INPUT IN THE FIELD LAST NAME
+    console.log(firstName); //LOGGING THE VARIABLE FIRST NAME
+    console.log(lastName);
+    userlist.push({'firstName':firstName, 'lastName': lastName}); //INSERTING THE VARIABLES IN THE DICTIONARY
+    alert(userlist); //ALERT
+  }
+
+  validate();
+</script>
+
 <body>
   <!-- CREATING NAV BAR -->
   <nav>
@@ -28,18 +42,18 @@
     <h2>Sign Up</h2>
   </div>
 
-  <form action="/login" method="post">
+  <form action="/adduser" method="post"> <!-- CREATE THE FORM FOR SIGNING UP -->
     <div class="row">
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6">
             <!-- FIRST NAME FORM -->
-            <input id="firstName" type="text" class="validate">
+            <input id="firstName" name="firstName" type="text" class="validate">
             <label for="firstName">First Name</label>
           </div>
           <div class="input-field col s6">
             <!-- LAST NAME FORM -->
-            <input id="last_name" type="text" class="validate">
+            <input id="last_name" name="lastName" type="text" class="validate">
             <label for="last_name">Last Name</label>
           </div>
         </div>
@@ -47,7 +61,7 @@
         <div class="row">
           <div class="input-field col s12">
             <!-- USERNAME FORM -->
-            <input id="userName" type="text" class="validate">
+            <input id="inputUserName" name="username" type="text" class="validate">
             <label for="userName">Username</label>
           </div>
         </div>
@@ -55,19 +69,19 @@
         <div class="row">
           <!-- PASSWORD FORM -->
           <div class="input-field col s6">
-            <input id="password" type="password" class="validate">
+            <input id="password" name="password" type="password" class="validate">
             <label for="password">Password</label>
           </div>
           <div class="input-field col s6">
             <!-- PASSWORD VALIDATION -->
-            <input id="password" type="password" class="validate">
+            <input id="password" name="passwordVal" type="password" class="validate">
             <label for="password">Retype Your Password</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
+            <input id="inputUserEmail" name="useremail" type="email" class="validate">
             <label for="email">Email</label>
           </div>
         </div>
@@ -75,7 +89,7 @@
         <div class="row">
           <div class="input-field col s12">
             <!-- PHONE FORM -->
-            <input id="phone" type="text" class="validate">
+            <input id="phone" name="phone" type="text" class="validate">
             <label for="phone">Phone</label>
           </div>
         </div>
@@ -84,19 +98,19 @@
           <!-- BIRTHDAY -->
           <div class="input-field col s4">
             <!-- MONTH FORM -->
-            <input id="month" type="text" class="validate">
+            <input id="month" name="month" type="text" class="validate">
             <label for="month">Month</label>
           </div>
 
           <div class="input-field col s4">
             <!-- DAY FORM -->
-            <input id="day" type="text" class="validate">
+            <input id="day" name="day" type="text" class="validate">
             <label for="day">Day</label>
           </div>
 
           <div class="input-field col s4">
             <!-- YEAR FORM -->
-            <input id="year" type="text" class="validate">
+            <input id="year" name="year" type="text" class="validate">
             <label for="year">Year</label>
           </div>
         </div>
@@ -105,26 +119,26 @@
         <div class="row">
           <div class="input-field col s12">
             <!-- STREET FORM -->
-            <input id="street" type="text" class="validate">
+            <input id="street" name="street" type="text" class="validate">
             <label for="street">Street Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <!-- CITY FORM -->
-            <input id="city" type="text" class="validate">
+            <input id="city" name="city" type="text" class="validate">
             <label for="city">City</label>
           </div>
 
           <div class="input-field col s4">
             <!-- STATE FORM -->
-            <input id="state" type="text" class="validate">
+            <input id="state" name="state" type="text" class="validate">
             <label for="state">State</label>
           </div>
 
           <div class="input-field col s4">
             <!-- ZIP CODE FORM -->
-            <input id="zipCode" type="text" class="validate">
+            <input id="zipCode" name="zipCode" type="text" class="validate">
             <label for="zipCode">Zip Code</label>
           </div>
         </div>
@@ -133,7 +147,7 @@
         <div class="row">
           <div class="input-field col s12">
             <!-- HIGH SCHOOL FORM -->
-            <input id="highSchool" type="text" class="validate">
+            <input id="highSchool" name="hs" type="text" class="validate">
             <label for="highSchool">High School Name</label>
           </div>
         </div>
@@ -141,7 +155,7 @@
         <div class="row">
           <div class="input-field col s12">
             <!-- HIGH SCHOOL CODE FORM -->
-            <input id="highSchoolCEEB" type="text" class="validate">
+            <input id="highSchoolCEEB" name="hsCode" type="text" class="validate">
             <label for="highSchoolCEEB">High School Code</label>
           </div>
         </div>
@@ -150,13 +164,13 @@
           <div class="row">
             <div class="col s6">
               <p>
-                <input name="group1" type="radio" id="test1" />
+                <input name="group1" name="TS" type="radio" id="test1" />
                 <label for="test1">Transfer Student</label>
               </p>
             </div>
             <div class="col s6">
               <p>
-                <input name="group1" type="radio" id="test2" />
+                <input name="group1" name="PS" type="radio" id="test2" />
                 <label for="test2">Prospective Student</label>
               </p>
             </div>
@@ -166,8 +180,8 @@
     </div>
   </form>
 
-  <div class="center">
-    <button class="waves-effect waves-light btn" value="sumbit">Submit</button>
+  <div class="center"> <!-- SUBMIT BUTTON -->
+    <button id="btnSubmit" onclick="validate()" class="waves-effect waves-light btn" type="sumbit">Submit</button>
   </div>
   </br>
 
@@ -181,6 +195,7 @@
           <!-- CONTACT US -->
           <h5 class="white-text">Contact Us</h5>
           <ul>
+            <!-- INFORMATION -->
             <li>Email: <a class="grey-text text-lighten-3" href="#!">MapYourTour@gmail.com</a></li>
             <li>Instagram: <a class="grey-text text-lighten-3" href="https://instagram.com/mapyourtour/">@MapYourTour</a></li>
             <li>Facebook: <a class="grey-text text-lighten-3" href="#!">Map Your Tour</a></li>

@@ -2,26 +2,26 @@
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
 
-var InfoWindow = new google.maps.InfoWindow({
+var InfoWindow = new google.maps.InfoWindow({ //INFO WINDOW HAS NO CONTENT
   content: ''
 });
 
-function initialize() {
+function initialize() { //INTITAL FUNCTION
   // jQuery AJAX call for JSON
-  $.getJSON( '/markers/markerlist', function( data ) {
+  $.getJSON( '/markers/markerlist', function( data ) { //GRABS THE DATA FROM THE ROUTE MARKERLIST (AKA THE DATA)
       console.log(data);
-    // Stick our user data array into a userlist variable in the global object
-        markerData = data;
-        drawMap();
+      // Stick our user data array into a userlist variable in the global object
+        markerData = data; //CREATES A VARIABLE (MARKERDATA) EQUAL TO THE DATA
+        drawMap(); //CALLS ON THE FUNCTION DRAW MAP TO DRAW THE MAP
   });
 }
 
-function drawMap() {
+function drawMap() { //DRAWS THE GOOGLE MAP
   var markers = [];
-  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), { //CREATES THE MAP IN THE DIV WITH THE ID MAP-CANVAS
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     zoom: 5,
-    center: {lat: 39, lng: -98}
+    center: {lat: 39, lng: -98} //SETS THE INTIAL LAT AND LONG
   });
 
 
@@ -78,11 +78,11 @@ function drawMap() {
     console.log(this)
     var latLong = new google.maps.LatLng(this.latitude, this.longitude);
     console.log(latLong)
-    var collegeName = '<h4 class="center">' + this.name + '</h4>' + '<p class="flow-text">Book Your Tour</p>' + '<input id="calendar" type="text" class="center" style="float:left;width:25%;" placeholder="Pick Your Date"></input>';
-    $(function() {
-      $( "#calendar" ).datepicker();
-    });
 
+    //CREATES A VARIABLE COLLEGENAME AND SETS THE HEADER TO BE EQUAL TO THE NAME OF THE DATA ID
+    var collegeName = '<h4 class="center">' + this.name + '</h4>' + '<p class="flow-text">Book Your Tour</p>' + '<input id="calendar" type="text" class="center" style="float:left;width:25%;" placeholder="Pick Your Date"></input>';
+
+    //CREATES THE CONTENT IN THE INFO WINDOW BASED ON THE COLLEGE INFO
     var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
@@ -91,25 +91,30 @@ function drawMap() {
           '</div>'+
           '</div>';
 
+    //CREATES THE MARKER
     var marker = new google.maps.Marker({
-        position: latLong,
+        position: latLong, //SETS THE LAT AND LONG
         map: map,
-        title: this.name
+        title: this.name //SETS THE TITLE EQUAL TO THE NAME
     });
 
     //var calendar = $(function() {$( "#calendar" ).datepicker();});
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function() { //WHEN THE MARKER IS CLICKED, THEN DISPLAY THE INFO WINDOW
         InfoWindow.close();
         InfoWindow.setContent(contentString);
         InfoWindow.open(map,marker);
 
-        document.getElementById('bookVisit').innerHTML = collegeName;
+        document.getElementById('bookVisit').innerHTML = collegeName; //GRABS THE DIV WITH THE ID OF BOOKVISIT AND SETS IT EQUAL TO THE VARIABLE COLLEGENAME
         //document.getElementById('calendar').innerHTML = calendar;
+        $(function() {
+          $( "#calendar" ).datepicker(); //CREATES THE CALENDAR
+        });
+
     });
   });
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize); //WHEN THE WINDOW LOADS, CALL ON THE INITIALIZE FUNCTION
 
 
 
