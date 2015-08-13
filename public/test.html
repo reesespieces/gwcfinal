@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html>
  <head>
-   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-   <meta charset="utf-8">
-
-   <title>Home</title>
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
-   <!-- Compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-
-   <!-- Compiled and minified JavaScript -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-
-   <!-- Datepicker -->
-   <script src="./jquery.datetimepicker.js"></script>
-   <link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/>
-
-  <script type="text/javascript">
-      $('#datetimepicker').datetimepicker({
-        inline:true
-      });
-  </script>
  </head>
- <body>
-     <h3>Inline DateTimePicker</h3>
-     <input type="text" id="datetimepicker"/><br><br> <!-- This line was causing the error, you dont need to have 2 buttons,
-                                                           there is one OR the other one -->
- </body>
-
+ <script>
+    function run()
+    {
+     var firstName = document.getElementById("firstName").value;
+     console.log(firstName);
+     //var firstName = "hello";
+     if ( firstName === "hello"){
+     alert("success!");
+     }
+    }
+</script>
+   <body>
+      First name: <input id = "firstName" type="text" name="firstName"><br>
+      <div class="center">
+       <button class="waves-effect waves-light btn" value="submit" onclick = "run()">Submit</button>
+      </div>
+   </body>
 </html>
