@@ -9,7 +9,7 @@ var InfoWindow = new google.maps.InfoWindow({ //INFO WINDOW HAS NO CONTENT
 function initialize() { //INTITAL FUNCTION
   // jQuery AJAX call for JSON
   $.getJSON( '/markers/markerlist', function( data ) { //GRABS THE DATA FROM THE ROUTE MARKERLIST (AKA THE DATA)
-      console.log(data);
+      //console.log(data);
       // Stick our user data array into a userlist variable in the global object
         markerData = data; //CREATES A VARIABLE (MARKERDATA) EQUAL TO THE DATA
         drawMap(); //CALLS ON THE FUNCTION DRAW MAP TO DRAW THE MAP
@@ -79,35 +79,29 @@ function drawMap() { //DRAWS THE GOOGLE MAP
     //console.log(this.dates);
     //alert(x);
     var latLong = new google.maps.LatLng(this.latitude, this.longitude);
-    console.log(latLong)
+    //console.log(latLong)
 
-    //CREATES AN ARRAY OF AVAILABLE TIMES FOR TOURS FOR RESPECTIVE COLLEGES
-    //COLLEGES = [{'NAME':'HARVARD',...,'DATES':[{DATE: '8/15/15', TIMES:[10, 11, 1]}, {'DATE':...}]}]
-    //CREATES THE CONTENT IN THE INFO WINDOW BASED ON THE COLLEGE INFO
-    //var availableDates = ["9-8-2015", "14-8-2015", "15-8-2015"];
-    if (this.name=="Brown University"){ //BROWN
-      var availableDates = ["24-8-2015", "27-8-2015", "15-8-2015"];
-      var availableTimes = ["10:00", "12:30", "3:30", "4:00"];
-    } else if (this.name=="Harvard University"){ //HARVARD
-      var availableDates = ["22-8-2015", "21-8-2015", "28-8-2015"];
-      var availableTimes = ["11:30", "1:00", "2:30"];
-    } else if (this.name=="University of Texas at Austin"){ //U TEXAS
-      var availableDates = ["31-8-2015", "15-8-2015", "20-8-2015"];
-      var availableTimes = ["9:00", "10:30", "1:30", "3:30"];
-    } else { //MICHIGAN
-      var availableDates = ["26-8-2015", "27-8-2015", "24-8-2015"];
-      var availableTimes = ["10:00", "12:30", "3:30", "4:00"];
-    }
     //CREATES A VARIABLE COLLEGENAME AND SETS THE HEADER TO BE EQUAL TO THE NAME OF THE DATA ID
     var collegeName = '<h4 class="center">' + this.name + '</h4>' + '<p class="flow-text">Book Your Tour</p>' +
     '<input id="calendar" type="text" class="center" style="float:left;width:25%;" placeholder="Pick Your Date"></input>';
 
+    var tourDates = [];
+    for(var i = 0; i < this.dates.length; i++){ //this.dates[0].date;
+      var dates = this.dates[i].date;
+      tourDates.push(dates);
+    }
 
-    /*for(var i = 0; i < db.collegelist.length; i ++){
-      db.collegelist.find({"name" : 1});
-    }*/
-
-    //var availableDates = this.dates[0].date[0];
+    var tourTimes = [];
+    for(var i = 0; i < this.dates.length; i++){ //this.dates[0].date;
+      //for(var j = 0; j < this.dates[i].times.length; j++){
+        var date = this.dates[i].date;
+        var times = this.dates[i].times; //var times = this.dates[i].times[i];
+        tourTimes.push({'date' : date, 'times' : times});
+        //console.log("Date: ", date);
+      //}
+    }
+    console.log("Date and Time: ",tourTimes);
+    //console.log(this.dates[0].date);
 
     var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
@@ -132,30 +126,42 @@ function drawMap() { //DRAWS THE GOOGLE MAP
         InfoWindow.open(map,marker);
 
         document.getElementById('bookVisit').innerHTML = collegeName; //GRABS THE DIV WITH THE ID OF BOOKVISIT AND SETS IT EQUAL TO THE VARIABLE COLLEGENAME
-        //document.getElementById('calendar').innerHTML = calendar;
-        /*$(function() {
-          $( "#calendar" ).datepicker(); //CREATES THE CALENDAR
-        });*/
+
         function available(date){ //CREATES THE FUNCTION THAT TAKES THE PARAMETER DATE
-          dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear(); //CREATES A VARIABLE THAT RETURNS DATE LIKE: DD-MM-YYYY
-          if ($.inArray(dmy, availableDates) != -1) { //I HAVE NO CLUE
+          dmy = (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear(); //CREATES A VARIABLE THAT RETURNS DATE LIKE: DD-MM-YYYY
+          //console.log(dmy);
+          //console.log(tourDates);
+
+          if ($.inArray(dmy, tourDates) != -1) { //IS IT IN THE ARRAY? -- $.inArray(dmy, tourDates) != -1
             return [true, "", "Available"]; //DATE IS AVAILABLE
+
+            //var timeVisit = '</br></br></br><form action="#"><input id="time' + tourTimes + '" type="radio"><label for="time' + tourTimes + '">' + tourTimes + '</label>'
+            //document.getElementById('bookTime').innerHTML = timeVisit;
           } else {
             return [false,"","unAvailable"]; //DATE IS UNAVAILABLE
           }
         }
 
+        $('#calendar').datepicker({
+          beforeShowDay : available, //SHOW AVAILABLE DATES
+          onSelect : function(selected,evnt) { //ON THE AVAILABLE DATES
+              var timeVisit = '</br></br></br><form action="#">';
+              for(var i = 0; i < tourTimes.length; i++){
+                //CHECKS TO SEE IF THE VALUE OF THE SELECTED DATE EQUALS THE VALUE OF THE DATE
+                if(new Date(selected).valueOf() == new Date(tourTimes[i].date).valueOf()){
 
-        /*function available(time){ //CREATES THE FUNCTION THAT TAKES THE PARAMETER DATE
-          '<input id="test1" type="radio"/><label for="test1">'time'</label>'
-          if ($.inArray(time, availableTimes) != -1) { //I HAVE NO CLUE
-            '<input type="radio" id="test1" /><label for="test1">' + time + '</label>'
-            return [true, "", "Available"]; //DATE IS AVAILABLE
-          } else {
-            return [false,"","unAvailable"]; //DATE IS UNAVAILABLE
+                  for(var j = 0; j < tourTimes[i].times.length; j++){
+                    timeVisit += '<input id="time' + tourTimes[i].times[j] + '" type="radio"><label for="time' + tourTimes[i].times[j] + '">' + tourTimes[i].times[j] + '</label></br>'
+                    console.log("Time Visit :", timeVisit);
+                    timeVisit += '</form>';
+                  }
+                }
+              }
+              $('#bookTime').html(
+                timeVisit + '<button type="submit" class="btn waves-effect waves-light" name="action">Book Your Tour</button>'
+              );
           }
-        } */
-        $('#calendar').datepicker({ beforeShowDay: available}); //SHOW AVAILABLE DATES
+        });
 
     });
   });
