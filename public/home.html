@@ -56,6 +56,25 @@
                   </div>
                 </div>
               </form>
+                <script>
+                    var user = document.getElementById("userName").value; //GRAB VALUE OF THE INPUT IN THE FIELD FIRST NAME
+                    var pass = document.getElementById("password").value; //GRAB VALUE OF THE INPUT IN THE FIELD LAST NAME
+                    console.log(user); //LOGGING THE VARIABLE FIRST NAME
+                    console.log(pass);
+
+                    for (var key in userlist[]){
+                      console.log(key);
+                      if ( key == user){
+                        console.log(user);
+                        if (pass == userlist[user]){
+                          alert("success");
+                        }
+                      }
+                    }
+
+
+
+                </script>
             </div>
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Log In</a>
           </div>

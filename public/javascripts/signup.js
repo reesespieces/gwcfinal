@@ -17,7 +17,7 @@ function addUser() {
       //USERNAME IS AVAILBLE BY SEEING IF THE FIRSTNAME THAT IS IN THE INPUT
       //FIELD IS NOT EQUAL TO THE FIRSTNAME IN THE DB
 
-    db.userlist.insert({'firstName':firstName, 'lastName':lastName})
+    db.userlist.insert({'inputUserName':user, 'password':pass})
 }
 
 event.addDomListener(window, 'load', initialize);

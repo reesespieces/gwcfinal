@@ -17,17 +17,18 @@
 </head>
 
 <script>
-  var userlist = {};
-  function validate(){
-    var firstName = document.getElementById("firstName").value();
-    var lastName = document.getElementById("lastName").value();
-console.log(firstName);
-console.log(lastName);
-    userlist.push({'firstName':firstName, 'lastName': lastName});
-    alert(userlist);
-  }
+<script>
+    var user = document.getElementById("userName").value; //GRAB VALUE OF THE INPUT IN THE FIELD FIRST NAME
+    var pass = document.getElementById("password").value; //GRAB VALUE OF THE INPUT IN THE FIELD LAST NAME
+    console.log(user); //LOGGING THE VARIABLE FIRST NAME
+    console.log(pass);
+    if (pass in userlist[user]){
+      alert("success");
+    }
 
-  validate();
+
+
+</script>
 </script>
 
   <div class="center">
